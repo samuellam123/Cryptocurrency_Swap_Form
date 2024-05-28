@@ -5,22 +5,54 @@
 
   <!-- You may add more stuff here -->
   <link href="style.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
 </head>
 
 <body>
-
   <!-- You may reorganise the whole HTML, as long as your form achieves the same effect. -->
+  <div class="wrapper">
   <form onsubmit="return !1">
-    <h5>Swap</h5>
-    <label for="input-amount">Amount to send</label>
-    <input id="input-amount" />
+    <header id="title">Token Swap</header>
 
-    <label for="output-amount">Amount to receive</label>
-    <input id="output-amount" />
+    <div class="input-amount"> 
+      <label for="input-amount">Amount to send</label>
+      <input type="text" id="input-amount" />
+    </div>
 
+    <div class="drop-list">
+      <div class="sell">
+        <p>Sell</p>
+        <div class="select-box">
+          <img src="https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/ETH.svg" alt="token icon">
+          <select> <!-- Options tag are inserted from JavaScript --> </select>
+        </div>
+      </div>
+
+      <div class="icon">
+        <i class="fas fa-exchange-alt"></i>
+      </div>
+
+      <div class="buy">
+        <p>Buy</p>
+        <div class="select-box">
+          <img src="https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/BTC.svg" alt="token icon">
+          <select> <!-- Options tag are inserted from JavaScript --> </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="input-amount"> 
+      <label for="output-amount">Amount to receive</label>
+      <input type="text" id="output-amount" />
+    </div>
+
+    <div class="exchange-rate">Getting exchange rate...</div>
+
+    <button>Get Token Exchange Rate</button>
     <button>CONFIRM SWAP</button>
   </form>
   <script src="script.js"></script>
+</div>
 </body>
 
 </html>

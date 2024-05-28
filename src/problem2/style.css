@@ -5,4 +5,25 @@ body {
     justify-content: center;
     min-width: 360px;
     font-family: Arial, Helvetica, sans-serif;
+    background-color: #183a4d;
+    text-align: center;
+
   }
+
+.wrapper {
+  background-color: white;
+  padding: 2%;
+  border-radius: 10px;
+  width: 300px;
+  height: 400px;
+}
+
+#title {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/*
+#183a4d dark blue
+#c8f47c green
+/
