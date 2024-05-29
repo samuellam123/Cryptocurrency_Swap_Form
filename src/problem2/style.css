@@ -23,6 +23,13 @@ body {
   font-weight: 500;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
 /*
 #183a4d dark blue
 #c8f47c green
