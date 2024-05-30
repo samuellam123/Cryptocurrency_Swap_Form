@@ -187,7 +187,8 @@ var token_list = [
     }
   ]
 
-// Mapping of token codes to their respective cases in the github repository
+// Mapping of token codes to their respective cases in the GitHub repository,
+// because currency name in prices.json might uses different case with the ones on GitHub repo
 var caseMapping = {
     "BLUR": "BLUR",
     "BNEO": "bNEO",
@@ -223,26 +224,37 @@ var caseMapping = {
     "ZIL": "ZIL"
   };
 
-var currencyList = token_list.map(token => token.currency.toUpperCase());
-var priceList = token_list.map(token => token.price);
+// Removes duplicate tokens from the list and keeps only the latest entry for each currency based on the date.
+function removeDuplicatesAndKeepLatest(token_list) {
+    const latest_token_list = {};
 
+    token_list.forEach(token => {
+        const { currency, date } = token;
+        if (!latest_token_list[currency] || new Date(date) > new Date(latest_token_list[currency].date)) {
+            latest_token_list[currency] = token;
+        }
+    });
 
+    return (latest_token_list);
+}
+const latest_token_list = removeDuplicatesAndKeepLatest(token_list);
+
+// Initialize the exchange page
 for (let i = 0; i < dropList.length; i++) {
-    for(let token in currencyList){
-        var this_token = currencyList[token];
+    for(let token in latest_token_list){
         // selecting ETH by default as SELL currency and USD as BUY currency
         let selected = "";
         if (i == 0) {
-            if (this_token == "ETH") {
+            if (token == "ETH") {
                 selected = "selected";
             }
         } else {
-            if (this_token == "USD") {
+            if (token == "USD") {
                 selected = "selected";
             }
         }
         // creating option tag with passing currency code as a text and value
-        let optionTag = `<option value="${this_token}" ${selected}>${this_token}</option>`;
+        let optionTag = `<option value="${token}" ${selected}>${token}</option>`;
         // inserting options tag inside select tag
         dropList[i].insertAdjacentHTML("beforeend", optionTag);
     }
@@ -253,27 +265,30 @@ for (let i = 0; i < dropList.length; i++) {
 }
 
 function loadFlag(element){
-    for(let token in currencyList){
-        var this_token = currencyList[token];
-        // if currency code of country list is equal to option value
-        if(this_token == element.value){ 
+    for(let token in latest_token_list){
+        // if token_code is equal to option value
+        if(token == element.value){ 
             // selecting img tag of particular drop list
             let imgTag = element.parentElement.querySelector("img"); 
-            let displayText = caseMapping[this_token] || currency_code;
-            // passing country code of a selected currency code in a img url
-            imgTag.src = getIconUrl(displayText);
+            // get token img from online GitHub repo
+            imgTag.src = getIconUrl(token);
         }
     }
 }
 
+// get token icon img from online GitHub repo, with token 
 function getIconUrl(token) {
-    return `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${token}.svg`;
+    // map token code to correct casing 
+    let display_token = caseMapping[token.toUpperCase()]
+    return `https://raw.githubusercontent.com/Switcheo/token-icons/main/tokens/${display_token}.svg`;
 }
 
+// Calc Exchange rate of default ETH to USD
 window.addEventListener("load", ()=>{
     getExchangeRate();
 });
 
+// Listen to each "Get Token Button Exchange Rate" button click
 getButton.addEventListener("click", e =>{
     e.preventDefault(); //preventing form from submitting
     getExchangeRate();
@@ -301,8 +316,8 @@ function getExchangeRate(){
     }
 
     // fetching SELL and BUY price from the price_list from JSON
-    let sell_token_price = priceList[currencyList.indexOf(fromToken.value)];
-    let buy_token_price = priceList[currencyList.indexOf(toToken.value)];
+    let sell_token_price = latest_token_list[fromToken.value].price;
+    let buy_token_price = latest_token_list[toToken.value].price;
 
     try {
         // calculate buy_price by using formula: sell_token_amount * sell_token_price = buy_token_amount * buy_token_price
