@@ -2,7 +2,7 @@ const dropList = document.querySelectorAll("form select"),
 fromToken = document.querySelector(".sell select"),
 toToken = document.querySelector(".buy select"),
 getButton = document.querySelector("form button");
-cfmButton = document.querySelectorAll("form button")[1];
+connectButton = document.querySelectorAll("form button")[1];
 
 var token_list = [
     {
@@ -294,6 +294,11 @@ getButton.addEventListener("click", e =>{
     getExchangeRate();
 });
 
+connectButton.addEventListener("click", e =>{
+  e.preventDefault(); //preventing form from submitting
+  goToLink();
+});
+
 const exchangeIcon = document.querySelector("form .icon");
 exchangeIcon.addEventListener("click", ()=>{
     let tempCode = fromToken.value; // temporary currency code of FROM drop list
@@ -322,7 +327,12 @@ function getExchangeRate(){
     try {
         // calculate buy_price by using formula: sell_token_amount * sell_token_price = buy_token_amount * buy_token_price
         // Set to 6 significant level, referenced to https://app.uniswap.org/swap.
-        let buy_token_amount = (sell_token_amount * sell_token_price / buy_token_price).toPrecision(6);
+        let buy_token_amount = (sell_token_amount * sell_token_price / buy_token_price);
+        if (buy_token_amount < 100000) {
+          buy_token_amount = buy_token_amount.toPrecision(6)
+        } else {
+          buy_token_amount = buy_token_amount.toFixed(3)
+        }
 
         // input back to HTML, to display exchange rate
         exchangeRateTxt.innerText = `${sell_token_amount} ${fromToken.value} = ${buy_token_amount} ${toToken.value}`;
@@ -332,6 +342,7 @@ function getExchangeRate(){
     
 }
 
-function confirmExchange() {
-    
+function goToLink() {
+    window.open(
+      "https://dem.exchange", "_blank")
 }

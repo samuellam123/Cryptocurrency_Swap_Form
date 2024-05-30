@@ -2,8 +2,7 @@
 
 <head>
   <title>Fancy Form</title>
-  <link rel="icon" 🍭>
-
+  <link rel="icon" type="image/x-icon" href="images/favicon.png">
   <!-- You may add more stuff here -->
   <link href="style.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
@@ -13,11 +12,11 @@
   <!-- You may reorganise the whole HTML, as long as your form achieves the same effect. -->
   <div class="wrapper">
   <form onsubmit="return !1">
-    <header id="title">Token Swap</header>
+    <header>Token Swap</header>
 
     <div class="input-amount"> 
       <label for="input-amount">Amount to send</label>
-      <input type="number" step="0.00001" id="input-amount" value="1">
+      <input type="number" step="0.00001" autocomplete="off" id="input-amount" value="1">
     </div>
 
     <div class="drop-list">
@@ -50,7 +49,7 @@
     <div class="exchange-rate">Getting exchange rate...</div>
 
     <button>Get Token Exchange Rate</button>
-    <button id="confirmButton">CONFIRM SWAP</button>
+    <button id="connectButton"><u>Connect Wallet</u> <img src="images/open_link.png" alt="Follow_Link"></a></button>
   </form>
   
   <script type="text/javascript" src="script.js"></script>
