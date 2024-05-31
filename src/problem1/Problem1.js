@@ -1,6 +1,6 @@
 var sum_to_n_a = function(n) {
     // Summation = n(n+1)/2; O(1) time, O(1) space
-    return (n * (n + 1)) / 2;
+    return (n * (n + 1)) / 2; 
 };
 
 var sum_to_n_b = function(n) {
