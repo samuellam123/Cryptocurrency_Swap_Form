@@ -5,13 +5,11 @@ This project provides a functional interface for swapping different cryptocurren
 
 Features:
 1. Dynamic Token Selection: Users can select from a variety of cryptocurrencies for both buying and selling options.
-2. Real-Time Exchange Rates: The application fetches and displays the current exchange rates for selected token pairs.
+2. Real-time Exchange Rates: The application fetches and displays the current exchange rates for selected token pairs.
 3. Wallet Connectivity: Users can connect their cryptocurrency wallets to interact with their holdings directly from the interface.
 
 Technologies Used:
-1. HTML: Structures the web page and forms the backbone of the user interface.
-2. CSS: Provides styling and responsive design to make the application accessible on various devices.
-3. JavaScript: Powers the dynamic aspects of the application, such as API calls for real-time pricing and interactive elements.
+HTML, CSS, JavaScript
 
 Access Link:
 https://samuellam123.github.io/LamYuEn_Switcheo/
