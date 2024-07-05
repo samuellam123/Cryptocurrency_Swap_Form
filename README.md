@@ -53,7 +53,6 @@ Once the development server is running, you can access the application at `http:
 - Enter the amount of cryptocurrency you want to swap.
 - Select the cryptocurrency you want to sell and buy.
 - Click the "Get Token Exchange Rate" button to fetch the exchange rate from the static `prices.json` file.
-- Use the "Connect Wallet" button to connect your wallet (note: implement the wallet connection logic as needed).
 
 ## Components
 
@@ -82,7 +81,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Samuel Lam - https://www.linkedin.com/in/lam-yu-en/ - yuen_lam@mymail.sutd.edu.sg
+https://www.linkedin.com/in/lam-yu-en/ - yuen_lam@mymail.sutd.edu.sg
 
 Project Link: [https://github.com/samuellam123/LamYuEn_CryptoSwapForm](https://github.com/samuellam123/LamYuEn_CryptoSwapForm)
 
