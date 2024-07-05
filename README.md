@@ -1,11 +1,11 @@
 # CryptoSwapForm
 
-CryptoSwapForm is a React-based web application that allows users to swap between different cryptocurrencies. The application fetches real-time exchange rates and provides a user-friendly interface for swapping tokens.
+CryptoSwapForm is a React-based web application that allows users to swap between different cryptocurrencies. The application uses a static `prices.json` file to provide exchange rates and offers a user-friendly interface for swapping tokens.
 
 ## Features
 
 - Swap between different cryptocurrencies.
-- Real-time exchange rates.
+- Exchange rates from a static `prices.json` file.
 - Connect wallet functionality.
 - Responsive design.
 
@@ -52,7 +52,7 @@ Once the development server is running, you can access the application at `http:
 
 - Enter the amount of cryptocurrency you want to swap.
 - Select the cryptocurrency you want to sell and buy.
-- Click the "Get Token Exchange Rate" button to fetch the latest exchange rate.
+- Click the "Get Token Exchange Rate" button to fetch the exchange rate from the static `prices.json` file.
 - Use the "Connect Wallet" button to connect your wallet (note: implement the wallet connection logic as needed).
 
 ## Components
